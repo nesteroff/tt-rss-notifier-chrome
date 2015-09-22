@@ -1,7 +1,7 @@
 {
   "name": "Tiny Tiny RSS Notifier",
   "background": {
-    "scripts": ["js/background.js"],
+    "scripts": ["js/background.js", "js/refresh.js"],
     "persistent": false
   },
   "version": "0.5.2",
