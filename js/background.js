@@ -52,7 +52,7 @@ function update() {
       var badge_color = new Object();
 
       // init stuff
-      icon.path = 'images/normal.png';
+      icon.path = 'images/icon_48.png';
       title.title = '';
       badge.text = '';
       badge_color.color = [0, 0, 0, 0];
@@ -77,7 +77,6 @@ function update() {
         if (isNaN(fresh)) fresh = 0;
 
         if (unread > 0) {
-          icon.path = 'images/alert.png';
           title.title = 'You have %s unread articles.'.replace('%s', unread);
 
           if (show_fresh && fresh > 0) {
@@ -88,7 +87,8 @@ function update() {
             badge_color.color = [255, 0, 0, 255];
           }
         } else if (unread == -1) {
-          icon.path = 'images/error.png';
+          badge_color.color = [190, 190, 190, 230];
+          badge.text = 'X';
 
           var errorMsg = xhr.responseText.split(';')[1];
 
@@ -102,7 +102,9 @@ function update() {
       } else {
         localStorage['last_error'] = xhr.responseText;
 
-        icon.path = 'images/error.png';
+        badge_color.color = [190, 190, 190, 230];
+        badge.text = 'X';
+
         title.title = 'Error (%s) while updating.'.replace('%s', xhr.status);
       }
 
