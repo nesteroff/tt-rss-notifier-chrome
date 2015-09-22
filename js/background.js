@@ -210,6 +210,17 @@ function init() {
   timeout();
   chrome.alarms.create({periodInMinutes: 1});
   chrome.alarms.onAlarm.addListener(function() {timeout();});
+
+  // By default badge is enabled
+  if (!localStorage['show_badge'])
+    localStorage['show_badge'] = '1';
+
+  // Display settings page at the first run
+  if (!localStorage.getItem('install_time')) {
+    var now = new Date().getTime();
+    localStorage.setItem('install_time', now);
+    chrome.tabs.create({url: "options.html"});
+  }
 }
 
 init();
